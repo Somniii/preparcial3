@@ -1,17 +1,26 @@
 package preparcial;
 
 public class Policia implements Recurso{
-    private static final double facturacion =500;
+    private static final double precioBase =500;
+    private double facturacion;
     private int tiempoRespuestaMinutos;
     public Policia(){
 
     }
-    public Policia( int tiempoRespuestaMinutos) {
+    public Policia( int tiempoRespuestaMinutos , double facturacion) {
         this.tiempoRespuestaMinutos = tiempoRespuestaMinutos;
+        this.facturacion = facturacion;
     }
 
     public double getFacturacion() {
-        return facturacion;
+        return precioBase;
+    }
+
+    public void setFacturacion(double facturacion){
+        this.facturacion = facturacion;
+    }
+    public double getPrecioBase(){
+        return precioBase;
     }
 
     public int getTiempoRespuestaMinutos() {
