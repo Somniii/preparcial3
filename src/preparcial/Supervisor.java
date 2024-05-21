@@ -20,7 +20,7 @@ public class Supervisor extends Persona{
         }
     return costoTotal;
     }
-
+/*
     public static void tiemposAltos(Recurso recurso){
         int totalEmergencia = 0;
         recurso
@@ -30,4 +30,5 @@ public class Supervisor extends Persona{
 
         }
     }
+*/
 }

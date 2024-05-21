@@ -38,5 +38,8 @@ public class Usuario extends Persona{
     public void setFacturaUsuario(double facturaUsuario) {
         this.facturaUsuario = facturaUsuario;
     }
+    public String toString(){
+        return  ("Nombre usuario: "+getNombre()+"\nApellido usuario: "+getApellido()+"\nDni usuario: "+getDNI()+"\nPosee obra social :"+getObraSocial()+"\n---------");
+    }
 
 }

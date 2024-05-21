@@ -4,10 +4,15 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-
+        Usuario user = crearUsuario(scan);
+        System.out.println("PASA A RECORRER USUARIO");
+        recorrerUsuario(user);
+        System.out.println("PASA A MOSTRAR ESTADISTICA");
+        mostrarEstadistica(user);
     }
     public static Usuario crearUsuario(Scanner scan){
         //ENTRADA NORMAL DE DATOS DEL USUARIO
+        System.out.println("------BIENVENIDO A LA CREACION DEL USUARIO------");
         System.out.println("Ingrese un nombre del usuario");
         String nombre = scan.nextLine();
         System.out.println("Ingrese un apellido del usuario");
@@ -32,16 +37,16 @@ public class Main {
         Recurso[] recurso = new Recurso[cant];
 
         //PARA LLENAR CADA FACTURA DEPENDIENDO DEL TIPO DE ORDEN
-        for(int i = 0; i<=cant ;i++){
+        for(int i = 0; i<cant ;i++){
             System.out.println("Cual tipo de recurso fue?\n1.Ambulancia\n2.Policia\n3.Bombero\n");
+            int tipoOrden = scan.nextInt();
             System.out.println("Cual fue el tiempo de respuesta en minutos?");
             int tiempo = scan.nextInt();
-            int tipoOrden = scan.nextInt();
             double precioTotal;
             switch (tipoOrden){
                 case 1:
                     Ambulancia a = new Ambulancia();
-                    if(obraSocial=="si"){
+                    if(obraSocial =="si"){
                         precioTotal = a.getPrecioBase();
                     }else{
                         //Aca si no tiene obra social o si no especifico se le suman 1000
@@ -51,14 +56,14 @@ public class Main {
                     a.setTiempoRespuestaMinutos((tiempo));
                     a.calculaCosto();
                     //PROBANDO SINO facturaFinal =+ a.getFacturacion
-                    facturaFinal =+ a.calculaCosto();
+                    facturaFinal =facturaFinal+ a.calculaCosto();
                     recurso[i] = a;
                     break;
                 case 2:
                     Policia p = new Policia();
                     p.setFacturacion(p.getPrecioBase());
                     p.setTiempoRespuestaMinutos(tiempo);
-                    facturaFinal =+ p.calculaCosto();
+                    facturaFinal =facturaFinal+ p.calculaCosto();
                     recurso[i] = p;
                     break;
                 case 3:
@@ -66,18 +71,79 @@ public class Main {
                     b.setFacturacion(b.getPrecioBase());
                     b.setTiempoRespuestaMinutos(tiempo);
                     b.calculaCosto();
-                    facturaFinal =+ b.calculaCosto();
+                    facturaFinal =facturaFinal+ b.calculaCosto();
                     recurso[i] = b;
                     break;
                 default:
                     System.out.println("Fue roto por culpa señor usuario del que puso un valor distinto , sos un rompecodigos");
                     break;
             }
+            System.out.println("------------Factura final-----------\n"+facturaFinal);
 
         }
         Usuario u = new Usuario(apellido,dni,nombre,obraSocial,recurso,facturaFinal);
         return u;
 
+    }
+    public static void recorrerUsuario(Usuario u){
+        System.out.println(u.toString());
+        for(int i = 0; i< u.getRecurso().length ; i++){
+            Recurso recurso = u.getRecurso()[i];
+            if(recurso instanceof Ambulancia){
+                System.out.println("El recurso utilizado por el usuario fue una Ambulancia");
+                System.out.println(recurso.toString());
+            }
+            else if(recurso instanceof Policia){
+                System.out.println("Recurso:"+i+1);
+                System.out.println("El recurso utilizado por el usuario fue un Policia");
+                System.out.println(recurso.toString());
+            }
+            else if(recurso instanceof Bombero){
+                System.out.println("Recurso:"+i+1);
+                System.out.println("El recurso utilizado por el usuario fue un Policia");
+                System.out.println(recurso.toString());
+
+            }
+        }
+        //factuacion total en el println de abajo
+        System.out.println("TOTAL FACTURACION MENSUAL:"+u.getFacturaUsuario());
+    }
+    public static void mostrarEstadistica(Usuario u){
+        //SE PUEDE HACER SIN LA LINEA TOTAL RECURSOS PERO LA HAGO PARA HACERLO MAS SIMPLE
+        double totalRecursos = u.getRecurso().length;
+        int a,b,p,tiemposExcesivos, tEA,tEB,tEP;
+        a=0;
+        b=0;
+        p=0;
+        tiemposExcesivos=0;
+        tEA=0;
+        tEB=0;
+        tEP=0;
+        double porcentajeAmbulancia,porcentajeBombero,porcentajePolicia;
+        for(int i = 0; i< u.getRecurso().length ;i++){
+            Recurso recurso = u.getRecurso()[i];
+            if(recurso instanceof  Ambulancia){
+                a++;
+                if(((Ambulancia) recurso).getTiempoRespuestaMinutos()>50){
+                    tiemposExcesivos++;
+                   // tEA++;
+                }
+            }else if(recurso instanceof Bombero){
+                b++;
+                if(((Bombero) recurso).getTiempoRespuestaMinutos()>50){
+                    tiemposExcesivos++;
+                    //tEB++;
+                }
+            }else if(recurso instanceof Policia){
+                p++;
+                if(((Policia) recurso).getTiempoRespuestaMinutos()>50){
+                    tiemposExcesivos++;
+                }
+            }
+
+
+        }
+        System.out.println("De los "+totalRecursos+" del usuario:\n"+ (a/totalRecursos)*100 + "% fueron de ambulancias \n"+ (b/totalRecursos)*100+"% fueron de Bomberos\n"+(p/totalRecursos)*100+"% fueron de Policias\nEl "+(tiemposExcesivos/totalRecursos)*100+"% del total supero los 50 minutos\n");
     }
 
 }
