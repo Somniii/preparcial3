@@ -43,5 +43,25 @@ public class Supervisor extends Persona{
         return totalEmergencia;
     }
 
+    public double getFacturacionTotal() {
+        return facturacionTotal;
+    }
+
+    public void setFacturacionTotal(double facturacionTotal) {
+        this.facturacionTotal = facturacionTotal;
+    }
+
+    public int getResultadoAuditoriaTiempos() {
+        return resultadoAuditoriaTiempos;
+    }
+
+    public void setResultadoAuditoriaTiempos(int resultadoAuditoriaTiempos) {
+        this.resultadoAuditoriaTiempos = resultadoAuditoriaTiempos;
+    }
+
+    public String toString(){
+        return "Facturacion total:\n"+getFacturacionTotal()+"Auditoria tiempo:\n"+getResultadoAuditoriaTiempos();
+    }
+
 
 }

@@ -9,16 +9,20 @@ public class Main {
         recorrerUsuario(user);
         System.out.println("PASA A MOSTRAR ESTADISTICA");
         mostrarEstadistica(user);
+        Supervisor s = cargarSupervisor(scan , user);
+        int total = 0;
+        for(int i = 0; i<user.getRecurso().length; i++){
+            Recurso r = user.getRecurso()[i];
+            total = total + s.tiemposAltos(r);
+
+        }
+        System.out.println("El total de los recursos que superan los 49 minutos es :\n"+total);
+        System.out.println(s.toString());
     }
     public static Usuario crearUsuario(Scanner scan){
         //ENTRADA NORMAL DE DATOS DEL USUARIO
         System.out.println("------BIENVENIDO A LA CREACION DEL USUARIO------");
-        System.out.println("Ingrese un nombre del usuario");
-        String nombre = scan.nextLine();
-        System.out.println("Ingrese un apellido del usuario");
-        String apellido = scan.nextLine();
-        System.out.println("Ingrese el dni del usuario");
-        int dni = scan.nextInt();
+        Persona per = cargaPersona(scan);
         System.out.println("El usuario posee obra social?\n1.Si\n2.No\nOtra opcion sera tomada como no\n");
         int opc = scan.nextInt();
         //PARA VER SI TIENE OBRA SOCIAL O NO
@@ -39,10 +43,10 @@ public class Main {
         //PARA LLENAR CADA FACTURA DEPENDIENDO DEL TIPO DE ORDEN
 
         for(int i = 0; i<cant ;i++){
-            System.out.println("Cual fue el tiempo de respuesta en minutos?");
-            int tiempo = scan.nextInt();
             System.out.println("Cual tipo de recurso fue?\n1.Ambulancia\n2.Policia\n3.Bombero\n");
             int tipoOrden = scan.nextInt();
+            System.out.println("Cual fue el tiempo de respuesta en minutos?");
+            int tiempo = scan.nextInt();
             double precioTotal;
             switch (tipoOrden){
                 case 1:
@@ -82,10 +86,10 @@ public class Main {
                     System.out.println("Fue roto por culpa señor usuario del que puso un valor distinto , sos un rompecodigos");
                     break;
             }
-            System.out.println("------------Factura final-----------\n"+facturaFinal);
+            //System.out.println("------------Factura final-----------\n"+facturaFinal);
 
         }
-        Usuario u = new Usuario(apellido,dni,nombre,obraSocial,recurso,facturaFinal);
+        Usuario u = new Usuario(per.getApellido(),per.getDNI(),per.getNombre(),obraSocial,recurso,facturaFinal);
         return u;
 
     }
@@ -149,8 +153,12 @@ public class Main {
         }
         System.out.println("De los "+totalRecursos+" del usuario:\n"+ (a/totalRecursos)*100 + "% fueron de ambulancias \n"+ (b/totalRecursos)*100+"% fueron de Bomberos\n"+(p/totalRecursos)*100+"% fueron de Policias\nEl "+(tiemposExcesivos/totalRecursos)*100+"% del total supero los 50 minutos\n");
     }
-    public static Supervisor supervisor(Scanner scan, Usuario usuario, Recurso recurso){
-        Persona p = CargaPersona(scan);
+    public static void mostrarSupervisor(Supervisor s){
+        System.out.println(s.toString());
+    }
+    public static Supervisor cargarSupervisor(Scanner scan, Usuario usuario){
+        System.out.println("----------Bienvenido a la carga de supervisor----------");
+        Persona p = cargaPersona(scan);
         Usuario user = usuario;
         int tiempo = 0;
         double facturaTotal=0;
@@ -170,13 +178,14 @@ public class Main {
     return  s;
     }
 
-    public static Persona CargaPersona(Scanner scan){
-        System.out.println("Ingrese un nombre del usuario");
+    public static Persona cargaPersona(Scanner scan){
+        System.out.println("Ingrese un nombre de la persona");
         String nombre = scan.nextLine();
-        System.out.println("Ingrese un apellido del usuario");
-        String apellido = scan.nextLine();
-        System.out.println("Ingrese el dni del usuario");
+        System.out.println("Ingrese el dni de la persona");
         long dni = scan.nextLong();
+        scan.nextLine();
+        System.out.println("Ingrese un apellido de la persona");
+        String apellido = scan.nextLine();
         Persona p = new Persona(apellido,dni,nombre);
         return  p;
     }
