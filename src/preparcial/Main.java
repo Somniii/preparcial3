@@ -49,29 +49,22 @@ public class Main {
                     }
                     a.setFacturacion(precioTotal);
                     a.setTiempoRespuestaMinutos((tiempo));
-<<<<<<< HEAD
 
                     facturaFinal =+ precioTotal;
-=======
-                    a.calculaCosto();
-                    //PROBANDO SINO facturaFinal =+ a.getFacturacion
-                    facturaFinal =+ a.calculaCosto();
->>>>>>> 1bb07989ce83689ab843219cfb836102b50603d8
                     recurso[i] = a;
                     break;
                 case 2:
                     Policia p = new Policia();
                     p.setFacturacion(p.getPrecioBase());
                     p.setTiempoRespuestaMinutos(tiempo);
-                    facturaFinal =+ p.calculaCosto();
+                    facturaFinal =+ p.getPrecioBase();
                     recurso[i] = p;
                     break;
                 case 3:
                     Bombero b = new Bombero();
                     b.setFacturacion(b.getPrecioBase());
                     b.setTiempoRespuestaMinutos(tiempo);
-                    b.calculaCosto();
-                    facturaFinal =+ b.calculaCosto();
+                    facturaFinal =+ b.getPrecioBase();
                     recurso[i] = b;
                     break;
                 default:
