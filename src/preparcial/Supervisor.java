@@ -41,4 +41,9 @@ public class Supervisor extends Persona{
         }
         return totalEmergencia;
     }
+    public static void supervisar(Usuario u){
+        for(int u.getRecurso().length){
+
+        }
+    }
 }
