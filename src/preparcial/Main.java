@@ -29,7 +29,9 @@ public class Main {
             int tipoOrden = scan.nextInt();
             switch (tipoOrden){
                 case 1:
-                    recurso[i]
+                    Ambulancia a = new Ambulancia();
+                    recurso[i] = a;
+
                     break;
                 case 2:
                     break;

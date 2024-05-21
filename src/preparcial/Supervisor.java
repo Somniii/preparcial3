@@ -21,8 +21,24 @@ public class Supervisor extends Persona{
     return costoTotal;
     }
 
-    public static void tiemposAltos(Recurso recurso){
+    public static int tiemposAltos(Recurso recurso){
         int totalEmergencia = 0;
-        recurso
+        Ambulancia a= new Ambulancia();
+        Bombero b = new Bombero();
+        Policia p = new Policia();
+        if (recurso instanceof Ambulancia){
+            if(((Ambulancia) recurso).getTiempoRespuestaMinutos()>=50){
+                totalEmergencia++;
+            }
+        } else if (recurso instanceof  Bombero){
+            if(((Bombero) recurso).getTiempoRespuestaMinutos()>=50){
+                totalEmergencia++;
+            }
+        }else if (recurso instanceof  Policia){
+            if(((Policia) recurso).getTiempoRespuestaMinutos()>=50){
+                totalEmergencia++;
+            }
+        }
+        return totalEmergencia;
     }
 }
