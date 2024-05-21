@@ -37,11 +37,19 @@ public class Main {
         Recurso[] recurso = new Recurso[cant];
 
         //PARA LLENAR CADA FACTURA DEPENDIENDO DEL TIPO DE ORDEN
+<<<<<<< HEAD
         for(int i = 0; i<cant ;i++){
             System.out.println("Cual tipo de recurso fue?\n1.Ambulancia\n2.Policia\n3.Bombero\n");
             int tipoOrden = scan.nextInt();
             System.out.println("Cual fue el tiempo de respuesta en minutos?");
             int tiempo = scan.nextInt();
+=======
+        for(int i = 0; i<=cant ;i++){
+            System.out.println("Cual fue el tiempo de respuesta en minutos?");
+            int tiempo = scan.nextInt();
+            System.out.println("Cual tipo de recurso fue?\n1.Ambulancia\n2.Policia\n3.Bombero\n");
+            int tipoOrden = scan.nextInt();
+>>>>>>> 791eb40c443ea0b1b7982c92e3477ddc7dc87d4e
             double precioTotal;
             switch (tipoOrden){
                 case 1:
@@ -54,9 +62,18 @@ public class Main {
                     }
                     a.setFacturacion(precioTotal);
                     a.setTiempoRespuestaMinutos((tiempo));
+<<<<<<< HEAD
+
+                    facturaFinal =+ precioTotal;
+=======
                     a.calculaCosto();
                     //PROBANDO SINO facturaFinal =+ a.getFacturacion
+<<<<<<< HEAD
                     facturaFinal =facturaFinal+ a.calculaCosto();
+=======
+                    facturaFinal =+ a.calculaCosto();
+>>>>>>> 1bb07989ce83689ab843219cfb836102b50603d8
+>>>>>>> 791eb40c443ea0b1b7982c92e3477ddc7dc87d4e
                     recurso[i] = a;
                     break;
                 case 2:
@@ -85,6 +102,7 @@ public class Main {
         return u;
 
     }
+<<<<<<< HEAD
     public static void recorrerUsuario(Usuario u){
         System.out.println(u.toString());
         for(int i = 0; i< u.getRecurso().length ; i++){
@@ -145,5 +163,38 @@ public class Main {
         }
         System.out.println("De los "+totalRecursos+" del usuario:\n"+ (a/totalRecursos)*100 + "% fueron de ambulancias \n"+ (b/totalRecursos)*100+"% fueron de Bomberos\n"+(p/totalRecursos)*100+"% fueron de Policias\nEl "+(tiemposExcesivos/totalRecursos)*100+"% del total supero los 50 minutos\n");
     }
+=======
+    public static Supervisor supervisor(Scanner scan, Usuario usuario, Recurso recurso){
+        Persona p = CargaPersona(scan);
+        Usuario user = usuario;
+        int tiempo = 0;
+        double facturaTotal=0;
+        facturaTotal= user.getFacturaUsuario();
+        for (int i=0; i<user.getRecurso().length;i++){
+            Recurso aux = user.getRecurso()[i];
+            if (aux instanceof  Ambulancia){
+                tiempo= tiempo + ((Ambulancia) aux).getTiempoRespuestaMinutos();
+            } else if (aux instanceof Bombero) {
+                tiempo= tiempo + ((Bombero) aux).getTiempoRespuestaMinutos();
+            } else if (aux instanceof  Policia){
+                tiempo= tiempo + ((Policia) aux).getTiempoRespuestaMinutos();
+            }
+        }
+>>>>>>> 791eb40c443ea0b1b7982c92e3477ddc7dc87d4e
 
+        Supervisor s = new Supervisor(p.getApellido(), p.getDNI(),p.getNombre(), facturaTotal, tiempo);
+
+    return  s;
+    }
+
+    public static Persona CargaPersona(Scanner scan){
+        System.out.println("Ingrese un nombre del usuario");
+        String nombre = scan.nextLine();
+        System.out.println("Ingrese un apellido del usuario");
+        String apellido = scan.nextLine();
+        System.out.println("Ingrese el dni del usuario");
+        long dni = scan.nextLong();
+        Persona p = new Persona(apellido,dni,nombre);
+        return  p;
+    }
 }

@@ -13,17 +13,38 @@ public class Supervisor extends Persona{
         this.resultadoAuditoriaTiempos = resultadoAuditoriaTiempos;
     }
 
-    public static double calcularCostoTotalMensual(Recurso recurso, int cantidad){
+    public double calcularCostoTotalMensual(Recurso recurso, int cantidad){
         double costoTotal = 0;
         for (int i=0; i<cantidad; i++){
             costoTotal = (costoTotal + recurso.calculaCosto());
         }
     return costoTotal;
     }
+<<<<<<< HEAD
 /*
     public static void tiemposAltos(Recurso recurso){
+=======
+
+    public int tiemposAltos(Recurso recurso){
+>>>>>>> 791eb40c443ea0b1b7982c92e3477ddc7dc87d4e
         int totalEmergencia = 0;
-        recurso
+        Ambulancia a= new Ambulancia();
+        Bombero b = new Bombero();
+        Policia p = new Policia();
+        if (recurso instanceof Ambulancia){
+            if(((Ambulancia) recurso).getTiempoRespuestaMinutos()>=50){
+                totalEmergencia++;
+            }
+        } else if (recurso instanceof  Bombero){
+            if(((Bombero) recurso).getTiempoRespuestaMinutos()>=50){
+                totalEmergencia++;
+            }
+        }else if (recurso instanceof  Policia){
+            if(((Policia) recurso).getTiempoRespuestaMinutos()>=50){
+                totalEmergencia++;
+            }
+        }
+        return totalEmergencia;
     }
     public static void supervisar(Usuario u){
         for(int u.getRecurso().length){
