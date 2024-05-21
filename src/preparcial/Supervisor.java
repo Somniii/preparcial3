@@ -20,13 +20,9 @@ public class Supervisor extends Persona{
         }
     return costoTotal;
     }
-<<<<<<< HEAD
-/*
-    public static void tiemposAltos(Recurso recurso){
-=======
+
 
     public int tiemposAltos(Recurso recurso){
->>>>>>> 791eb40c443ea0b1b7982c92e3477ddc7dc87d4e
         int totalEmergencia = 0;
         Ambulancia a= new Ambulancia();
         Bombero b = new Bombero();
@@ -46,10 +42,6 @@ public class Supervisor extends Persona{
         }
         return totalEmergencia;
     }
-    public static void supervisar(Usuario u){
-        for(int u.getRecurso().length){
 
-        }
-    }
-*/
+
 }
