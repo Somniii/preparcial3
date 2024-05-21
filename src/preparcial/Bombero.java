@@ -38,5 +38,8 @@ public class Bombero implements Recurso{
         }
         return costo;
     }
+    public String toString(){
+        return ("El tiempo de respuesta fue de "+getTiempoRespuestaMinutos()+" y el precio final fue de "+getFacturacion());
+    }
 
 }

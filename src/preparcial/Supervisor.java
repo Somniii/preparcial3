@@ -21,6 +21,7 @@ public class Supervisor extends Persona{
     return costoTotal;
     }
 
+
     public int tiemposAltos(Recurso recurso){
         int totalEmergencia = 0;
         Ambulancia a= new Ambulancia();
@@ -41,9 +42,26 @@ public class Supervisor extends Persona{
         }
         return totalEmergencia;
     }
-    public static void supervisar(Usuario u){
-        for(int u.getRecurso().length){
 
-        }
+    public double getFacturacionTotal() {
+        return facturacionTotal;
     }
+
+    public void setFacturacionTotal(double facturacionTotal) {
+        this.facturacionTotal = facturacionTotal;
+    }
+
+    public int getResultadoAuditoriaTiempos() {
+        return resultadoAuditoriaTiempos;
+    }
+
+    public void setResultadoAuditoriaTiempos(int resultadoAuditoriaTiempos) {
+        this.resultadoAuditoriaTiempos = resultadoAuditoriaTiempos;
+    }
+
+    public String toString(){
+        return "Facturacion total:\n"+getFacturacionTotal()+"Auditoria tiempo:\n"+getResultadoAuditoriaTiempos();
+    }
+
+
 }
