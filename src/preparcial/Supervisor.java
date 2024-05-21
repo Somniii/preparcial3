@@ -12,4 +12,17 @@ public class Supervisor extends Persona{
         this.facturacionTotal = facturacionTotal;
         this.resultadoAuditoriaTiempos = resultadoAuditoriaTiempos;
     }
+
+    public static double calcularCostoTotalMensual(Recurso recurso, int cantidad){
+        double costoTotal = 0;
+        for (int i=0; i<cantidad; i++){
+            costoTotal = (costoTotal + recurso.calculaCosto());
+        }
+    return costoTotal;
+    }
+
+    public static void tiemposAltos(Recurso recurso){
+        int totalEmergencia = 0;
+        recurso
+    }
 }
