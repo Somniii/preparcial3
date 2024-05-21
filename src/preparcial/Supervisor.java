@@ -13,7 +13,7 @@ public class Supervisor extends Persona{
         this.resultadoAuditoriaTiempos = resultadoAuditoriaTiempos;
     }
 
-    public static double calcularCostoTotalMensual(Recurso recurso, int cantidad){
+    public double calcularCostoTotalMensual(Recurso recurso, int cantidad){
         double costoTotal = 0;
         for (int i=0; i<cantidad; i++){
             costoTotal = (costoTotal + recurso.calculaCosto());
@@ -21,7 +21,7 @@ public class Supervisor extends Persona{
     return costoTotal;
     }
 
-    public static int tiemposAltos(Recurso recurso){
+    public int tiemposAltos(Recurso recurso){
         int totalEmergencia = 0;
         Ambulancia a= new Ambulancia();
         Bombero b = new Bombero();

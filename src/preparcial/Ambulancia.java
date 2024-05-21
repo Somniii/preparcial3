@@ -4,9 +4,11 @@ public class Ambulancia implements Recurso{
     private static final double precioBase = 5000;
     private double facturacion;
     private int tiempoRespuestaMinutos;
+
     public Ambulancia(){
 
     }
+
     public Ambulancia(int tiempoRespuestaMinutos, double facturacion) {
         this.tiempoRespuestaMinutos = tiempoRespuestaMinutos;
         this.facturacion = facturacion;
