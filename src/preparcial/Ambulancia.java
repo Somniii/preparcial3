@@ -1,18 +1,26 @@
 package preparcial;
 
 public class Ambulancia implements Recurso{
-    private static final double facturacion = 5000;
+    private static final double precioBase = 5000;
+    private double facturacion;
     private int tiempoRespuestaMinutos;
+    public Ambulancia(){
 
-    public Ambulancia() {
     }
-
-    public Ambulancia(int tiempoRespuestaMinutos) {
+    public Ambulancia(int tiempoRespuestaMinutos, double facturacion) {
         this.tiempoRespuestaMinutos = tiempoRespuestaMinutos;
+        this.facturacion = facturacion;
     }
 
     public double getFacturacion() {
-        return facturacion;
+        return precioBase;
+    }
+
+    public void setFacturacion(double facturacion){
+        this.facturacion = facturacion;
+    }
+    public double getPrecioBase(){
+        return precioBase;
     }
 
     public int getTiempoRespuestaMinutos() {
