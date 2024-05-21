@@ -1,23 +1,18 @@
 package preparcial;
 
-public class Bombero {
-    private double facturacion;
+public class Bombero implements Recurso{
+    private static final double facturacion = 600;
     private int tiempoRespuestaMinutos;
     public Bombero(){
 
     }
 
-    public Bombero(double facturacion, int tiempoRespuestaMinutos) {
-        this.facturacion = facturacion;
+    public Bombero( int tiempoRespuestaMinutos) {
         this.tiempoRespuestaMinutos = tiempoRespuestaMinutos;
     }
 
     public double getFacturacion() {
         return facturacion;
-    }
-
-    public void setFacturacion(double facturacion) {
-        this.facturacion = facturacion;
     }
 
     public int getTiempoRespuestaMinutos() {
@@ -27,4 +22,12 @@ public class Bombero {
     public void setTiempoRespuestaMinutos(int tiempoRespuestaMinutos) {
         this.tiempoRespuestaMinutos = tiempoRespuestaMinutos;
     }
+    public double calculaCosto() {
+        double costo = getFacturacion();
+        if (tiempoRespuestaMinutos > 50) {
+            costo = costo / 2;
+        }
+        return costo;
+    }
+
 }

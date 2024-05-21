@@ -2,17 +2,16 @@ package preparcial;
 
 public class Usuario extends Persona{
     private String obraSocial;
-    private double facturaUsuario;
     private Recurso[] recurso;
+    private double facturaUsuario;
+    public Usuario(){
 
-    public Usuario() {
     }
 
-    public double getFacturaUsuario() {
-        return facturaUsuario;
-    }
-
-    public void setFacturaUsuario(double facturaUsuario) {
+    public Usuario(String apellido, long DNI, String nombre, String obraSocial, Recurso[] recurso, double facturaUsuario) {
+        super(apellido, DNI, nombre);
+        this.obraSocial = obraSocial;
+        this.recurso = recurso;
         this.facturaUsuario = facturaUsuario;
     }
 
@@ -32,10 +31,12 @@ public class Usuario extends Persona{
         this.recurso = recurso;
     }
 
-    public Usuario(String apellido, long DNI, String nombre, double facturaUsuario, String obraSocial, Recurso[] recurso) {
-        super(apellido, DNI, nombre);
-        this.facturaUsuario = facturaUsuario;
-        this.obraSocial = obraSocial;
-        this.recurso = recurso;
+    public double getFacturaUsuario() {
+        return facturaUsuario;
     }
+
+    public void setFacturaUsuario(double facturaUsuario) {
+        this.facturaUsuario = facturaUsuario;
+    }
+
 }
